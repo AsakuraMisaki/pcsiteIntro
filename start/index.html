@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>webResolve</title>
+    <meta charset="utf-8">
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style type="text/css">
+    form {
+        margin: 0;
+    }
+    body {
+        flex-direction: column;
+    }
+    html {
+        font: 15px sans-serif;
+    }
+    a,
+    input {
+        font-size: inherit;
+        font-family: inherit;
+        font-weight: inherit;
+    }
+    #header-nav {
+        background: #24292e;
+        border: 0;
+        box-shadow: 5px 0px 15px #3f3f3f;
+        border-radius: 0;
+        position: fixed;
+        z-index: 100;
+        top: 0px;
+        width: 100%;
+        font-weight: normal;
+        max-height: 50px;
+    }
+    .navbar-default .navbar-nav>.active>a {
+        background: #fff;
+        opacity: 0.95;
+        color: #3f3f3f;
+    }
+    .navbar-default .navbar-nav>li>a:hover {
+        background: #6f6f6f;
+        color: #fff;
+    }
+    .navbar-default .navbar-nav>li>a:focus {
+        background: transparent;
+        color: #777;
+    }
+    #title:hover {
+        color: #fff;
+        opacity: 0.8;
+    }
+    #title {
+        color: #fff;
+        opacity: 0.9;
+    }
+    #poster {
+        width: 100%;
+        height: 50vh;
+        background: url("./startBG1.jpg");
+        background-position: left;
+        background-color: #2f363d;
+        box-sizing: border-box;
+        justify-content: center;
+        align-items: center;
+    }
+    #poster article {
+        color: #fff;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    #poster article p {
+        text-align: center;
+        opacity: 0.8;
+        font-size: 1.2vw;
+    }
+    #poster article h1 {
+        font-weight: bold;
+        text-align: center;
+        opacity: 0.95;
+        font-size: 3vw;
+    }
+    #poster article a {
+        border: 4px solid #fff;
+        border-radius: 10px;
+        width: 80%;
+        margin-top: 3%;
+        background-color: #49f;
+        padding: 2%;
+        font-size: 2vw;
+        box-sizing: border-box;
+        margin-bottom: 5%;
+    }
+    #poster article a>button {
+        border: 0;
+        background: transparent;
+        text-align: center;
+        width: 100%;
+        color: #fff;
+    }
+    #poster article .someWord {
+        opacity: 0.6;
+        text-align: left;
+    }
+    .global-divide {
+        width: 100%;
+        border: 0;
+        height: 2px;
+        background: #fff;
+    }
+    #header-search {
+        width: 20%;
+        height: 50px;
+        float: right;
+        align-items: center;
+    }
+    #header-search form {
+        width: 100%;
+    }
+    #header-search .input-group {
+        padding: 1%;
+        background-color: #3f3f3f;
+    }
+    #header-search .input-group * {
+        border: 0;
+        background-color: inherit;
+    }
+    [class*="flex-"] {
+        display: flex;
+    }
+    input:focus {
+        outline-offset: 0;
+    }
+    #concept {
+        width: 80%;
+        align-self: center;
+        margin-top: 4%;
+    }
+    #concept #list ul {
+        flex-direction: column;
+    }
+    #concept .step li>ul {
+        box-shadow: 0px 0px;
+    }
+    #concept .step li .first{
+    	background: #49f;
+    	color: #fff;
+    	margin-top: 12%;
+    }
+    #concept .step li .first:hover{
+    	background: #fff;
+    	color: #3f3f3f;
+    }
+    #concept .step li a:hover {
+        background: #fff;
+    }
+    #concept article {
+        padding-left: 5%;
+    }
+    #concept article li {
+        list-style: none;
+        margin-bottom: 6%;
+    }
+    #concept article .target {
+    	position: relative;
+        top: -70px;
+        width: 1px;
+        height: 1px;
+        z-index: -100;
+        display: block;
+    }
+    #concept article h1 {
+        font-weight: bold;
+    }
+    #concept article .devide {
+        border: 0;
+        height: 1px;
+        width: 100%;
+        background-color: #3f3f3f;
+        opacity: 0.2;
+    }
+    #concept article p {
+        opacity: 0.8;
+        font-size: 1.15vw;
+        line-height: 1.8;
+    }
+    #concept article h1>a {
+        font-size: 1vw;
+        color: #3f3f3f;
+        opacity: 0.6;
+        font-weight: normal;
+    }
+    #concept article h1>a:hover {
+        opacity: 1;
+        text-decoration: none;
+    }
+    #sideNav {
+        margin-right: 20%;
+    }
+    #sideNav li {
+        list-style-image: url("./src/res/spot.png")
+    }
+    #siteInfo {
+        margin-top: 4%;
+    }
+    #siteInfo .navbar {
+        background: #24292e;
+        margin-bottom: 0;
+        border-radius: 0;
+        border: 0;
+    }
+    #siteInfo #footer-r {
+        float: right;
+    }
+    #concept .dropdown-menu {
+        position: static;
+    }
+    #concept a{
+    	transition: background-color 0.5s ease-in-out,
+    	color 0.25s ease-in-out;
+    }
+    </style>
+</head>
+
+<body class="flex-">
+    <nav class="navbar navbar-default" role="navigation" id="header-nav">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="http://www.gstes.club/webResolve" id="title">WebResolve</a>
+            </div>
+            <div>
+                <ul class="nav navbar-nav">
+                    <li><a href="../login/index.html">登录</a></li>
+                    <li><a href="../index.html">概览</a></li>
+                    <li><a href="#">javascript</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    js框架
+                    <b class="caret"></b>
+                </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../vue/index.html">vue</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">agular</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">react</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    延伸
+                    <b class="caret"></b>
+                </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">webapp</a></li>
+                            <li class="divider"></li>
+                            <li><a href="../node/index.html">node</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">native.js</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div id="header-search" class="flex-">
+                <form class="bs-example bs-example-form" role="form">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="we are web developer">
+                        <span class="input-group-addon">></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <header id="poster" class="flex-">
+        <article>
+            <h1>教程: vue.js + webpack + node.js = an online WebAPP</h1>
+            <p>在此教程中，你将得到: 一台本地服务器(已实现静态托管); 一个在线的webApp; 一些有关js规范的知识; vue+webpack+node构建webapp的典例</p>
+        </article>
+    </header>
+    <main id="concept" class="flex-">
+        <section class="step">
+            <div class="collapse navbar-collapse bs-js-navbar-scrollspy" id="list">
+                <ul class="nav navbar-nav flex-">
+                    <li class="dropdown open first"><a href="#know" class="first">基础知识</a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#CommonJS">CommonJS</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#npm">npm</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#node">Node.js</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#vue">Vue.js</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#webpack">webpack</a></li>
+                        </ul>
+                    </li>
+                    <li class="first"><a href="#env" class="first">环境安装</a></li>
+                    <li class="dropdown open first">
+                        <a href="#" class="first">进阶: 配置</a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#package.json">package.json</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#webpack.config.js">webpack.config.js</a></li>
+                        </ul>
+                    </li>
+                    <li class="first"><a href="#final" class="first">app代码</a></li>
+                </ul>
+            </div>
+        </section>
+        <article>
+            <li>
+                <span class="target" id="CommonJS"> </span>
+                <h1>CommonJS <a href="http://www.commonjs.org/">http://www.commonjs.org/</a></h1>
+                <hr class="devide">
+                <p>
+                    ECMAScript规范没有为JavaScript定义一个标准库，而标准库对构建更广泛的应用程序很有用，
+                    CommonJS API将通过定义处理许多常见应用程序需求的API来填补这一空白，最终提供与Python，Ruby和Java一样丰富的标准库。目的是应用程序开发人员能够使用CommonJS API编写应用程序，然后跨不同的JavaScript解释器和主机环境运行该应用程序。
+                </p>
+            </li>
+            <li>
+                <span class="target" id="npm"> </span>
+                <h1>npm <a href="https://www.npmjs.com/">https://www.npmjs.com/</a></h1>
+                <hr class="devide">
+                <p>
+                    npm是JavaScript的包管理器和世界上最大的软件注册表。
+                </p>
+            </li>
+            <li>
+                <span class="target" id="node"> </span>
+                <h1>Node.js <a href="http://nodejs.cn/">http://nodejs.cn/</a></h1>
+                <hr class="devide">
+                <p>
+                    Node.js是基于ChromeV8-JavaScript引擎构建的JavaScript运行时，旨在构建可伸缩的网络应用程序。
+                </p>
+            </li>
+            <li>
+                <span class="target" id="vue"></span>
+                <h1>Vue.js <a href="https://cn.vuejs.org/v2/guide/">https://cn.vuejs.org/v2/guide/</a></h1>
+                <hr class="devide">
+                <p>
+                    Vue是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。另一方面，当与现代化的工具链以及各种支持类库结合使用时，Vue 也完全能够为复杂的单页应用提供驱动。
+                </p>
+            </li>
+            <li>
+                <span class="target" id="webpack"></span>
+                <h1>webpack <a href="https://www.webpackjs.com/concepts/">https://www.webpackjs.com/concepts/</a></h1>
+                <hr class="devide">
+                <p>
+                    webpack 是一个现代 JavaScript 应用程序的静态模块打包器(module bundler)。当 webpack 处理应用程序时，它会递归地构建一个依赖关系图(dependency graph)，其中包含应用程序需要的每个模块，然后将所有这些模块打包成一个或多个 bundle(包)
+                </p>
+            </li>
+        </article>
+    </main>
+    <footer id="siteInfo">
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <div>
+                    <ul class="nav navbar-nav">
+                        <li><a href="#">&copy web-resolve cooperation</a></li>
+                        <li><a href="#">团队</a></li>
+                        <li><a href="#">法律声明</a></li>
+                        <li><a href="#">帮助</a></li>
+                        <li><a href="#">API</a></li>
+                        <li><a href="#">其他相关</a></li>
+                    </ul>
+                </div>
+                <div id="footer-r">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#"> All Rights Reserved. 备案号：闽ICP备000000号-1
+   </a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </footer>
+</body>
+
+</html>

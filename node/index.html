@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>webResolve</title>
+    <meta charset="utf-8">
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style type="text/css">
+    body {
+        flex-direction: column;
+    }
+    html {
+        font: 15px sans-serif;
+    }
+    a,
+    input {
+        font-size: inherit;
+        font-family: inherit;
+        font-weight: inherit;
+    }
+    #header-nav {
+        background: #24292e;
+        border: 0;
+        box-shadow: 5px 0px 15px #3f3f3f;
+        border-radius: 0;
+        position: fixed;
+        z-index: 100;
+        top: 0px;
+        width: 100%;
+        font-weight: normal;
+    }
+    .navbar-default .navbar-nav>.active>a {
+        background: #fff;
+        opacity: 0.95;
+        color: #3f3f3f;
+    }
+    .navbar-default .navbar-nav>li>a:hover {
+        background: #6f6f6f;
+        color: #fff;
+    }
+    .navbar-default .navbar-nav>li>a:focus {
+        background: transparent;
+        color: #777;
+    }
+    #title:hover {
+        color: #fff;
+        opacity: 0.8;
+    }
+    #title {
+        color: #fff;
+        opacity: 0.9;
+    }
+    #poster {
+        width: 100%;
+        height: 60vh;
+        background-color: #273547;
+        box-sizing: border-box;
+        justify-content: space-around;
+        align-items: center;
+        padding: 2% 5% 0 5%;
+    }
+    #poster .pic {
+        width: 20%;
+
+    }
+    #poster article {
+        color: #fff;
+        flex-direction: column;
+        align-items: center;
+        width: 50%;
+    }
+
+    #poster article p {
+        text-align: center;
+        opacity: 0.8;
+        font-size: 1.2vw;
+    }
+    #poster article h1 {
+        font-weight: bold;
+        text-align: center;
+        opacity: 0.95;
+        font-size: 3vw;
+    }
+    #poster article h1>small {
+        font-weight: normal;
+        font-size: 1vw;
+    }
+    #poster article a {
+        text-decoration: none;
+        color: #fff;
+        opacity: 0.5;
+        font-weight: normal;
+    }
+    #poster article a:hover {
+        opacity: 0.8;
+    }
+    #poster article a>button {
+        border: 0;
+        background: transparent;
+        text-align: center;
+        width: 100%;
+        color: #fff;
+    }
+    #poster article .someWord {
+        opacity: 0.6;
+        text-align: left;
+    }
+    .global-divide {
+        width: 100%;
+        border: 0;
+        height: 2px;
+        background: #fff;
+    }
+    #header-search {
+        width: 20%;
+        height: 50px;
+        float: right;
+        align-items: center;
+    }
+    #header-search form {
+        width: 100%;
+    }
+    #header-search .input-group {
+        padding: 1%;
+        background-color: #3f3f3f;
+    }
+    #header-search .input-group * {
+        border: 0;
+        background-color: inherit;
+    }
+    [class*="flex-"] {
+        display: flex;
+    }
+    input:focus {
+        outline-offset: 0;
+    }
+    #concept {
+        width: 80%;
+        flex-direction: column;
+        margin-top: 4%;
+        align-self: center;
+    }
+    #concept>h1 {
+        align-self: center;
+        font-size: 1.5vw;
+        color: #24292e;
+        opacity: 0.8;
+    }
+    #concept>div {
+        justify-content: space-between;
+        align-items: center;
+        padding: 2% 10% 2% 10%;
+    }
+    #concept>div>div>p {
+        align-self: center;
+    }
+    #concept>div>div {
+        display: flex;
+        flex-direction: column;
+        border: 2px solid #3f3f3f;
+        box-shadow: 2px 2px 8px #3f3f3f;
+    }
+    #concept>.devide {
+        width: 60%;
+        align-self: center;
+        height: 2px;
+        border: 0;
+        border-radius: 5px;
+        background-color: #3f3f3f;
+        opacity: 0.6;
+    }
+    #concept>.bigger {
+        font-size: 2vw;
+        font-weight: bold;
+    }
+    #chromev8{
+        margin-top: 50px;
+        width: 95%;
+        align-self: center;
+    }
+    #chromev8 header{
+        border: 0;
+        background: #49f;
+        height: 40vh;
+        /*justify-content: space-between;*/
+        align-items: center;
+        padding: 0% 10% 0% 10%;
+        border-left: 30px solid #3f3f3f;
+    }
+    #chromev8 header .pic{
+        width: 10%;
+        margin-right: 5%;
+    }
+    #chromev8 header h1{
+        color: #fff;
+        font-weight: bold;
+    }
+    #chromev8 header .pic>img{
+        width: 100%;
+        border-radius: 50%;
+        box-shadow: 5px 5px 10px #3f3f3f;
+    }
+    #chromev8 header>.r{
+        margin-left: 40%;
+        align-self: center;
+        padding: 0;
+        margin-top: 2%;
+    }
+    #chromev8 header>.r>li{
+        margin-left: 30%;
+        list-style: none;
+        color: #fff;
+        opacity: 0.8;
+        font-size: 1vw;
+        white-space: nowrap;
+        margin-top: 2%;
+    }
+    #sideNav {
+        margin-right: 20%;
+    }
+    #sideNav li {
+        list-style-image: url("./src/res/spot.png")
+    }
+    #siteInfo {
+        margin-top: 4%;
+    }
+    #siteInfo .navbar {
+        background: #24292e;
+        margin-bottom: 0;
+        border-radius: 0;
+        border: 0;
+    }
+    #siteInfo #footer-r {
+        float: right;
+    }
+    </style>
+</head>
+
+<body class="flex-">
+    <nav class="navbar navbar-default" role="navigation" id="header-nav">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="http://www.gstes.club/webResolve" id="title">WebResolve</a>
+            </div>
+            <div>
+                <ul class="nav navbar-nav">
+                    <li><a href="../login/index.html">登录</a></li>
+                    <li><a href="../index.html">概览</a></li>
+                    <li><a href="./">javascript</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    js框架
+                    <b class="caret"></b>
+                </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../vue/index.html">vue</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">agular</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">react</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    延伸-node
+                    <b class="caret"></b>
+                </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">webapp</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">node</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">native.js</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div id="header-search" class="flex-">
+                <form class="bs-example bs-example-form" role="form">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="we are web developer">
+                        <span class="input-group-addon">></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <header id="poster" class="flex-">
+        <div class="pic">
+            <img src="./circleImg.svg">
+        </div>
+        <article>
+            <h1>Node.js <small>基于<a href="https://developers.google.com/v8/">chormev8-javascript引擎</a></small></h1>
+        </article>
+    </header>
+    <main id="concept" class="flex-">
+        <h1>编写你的代码并编译</h1>
+        <div class="flex-">
+            <div>
+                <p>(server)./main.js</p>
+                <img src="./mainjs.jpg">
+            </div>
+            <div>
+                <p>(server)./data.js</p>
+                <img src="./datajs.jpg">
+            </div>
+        </div>
+        <h1>访问你的网址</h1>
+        <div class="flex-">
+            <div>
+                <p>(client)./localhost</p>
+                <img src="./html.jpg">
+            </div>
+            <div>
+                <p>(client)f12</p>
+                <img src="./f12.jpg">
+            </div>
+        </div>
+        <h1>现在你可以尝试使用 <a href="http://www.expressjs.com.cn/">express.js</a> (node-web框架)进行便捷的服务端js编程了</h1>
+    </main>
+    <main id="chromev8">
+        <header class="flex-">
+            <div class="pic">
+                <img src="./chrome.jpg">
+            </div>
+            <h1>了解chromev8引擎</h1>
+            <ul class="r">
+                <li>开源</li>
+                <li>c++</li>
+                <li>事件驱动</li>
+                <li>linuv底层线程池</li>
+                <li>ECMAScript规范</li>
+                <li>可嵌入式</li>
+            </ul>
+        </header>
+    </main>
+    <footer id="siteInfo">
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <div>
+                    <ul class="nav navbar-nav">
+                        <li><a href="#">&copy web-resolve cooperation</a></li>
+                        <li><a href="#">团队</a></li>
+                        <li><a href="#">法律声明</a></li>
+                        <li><a href="#">帮助</a></li>
+                        <li><a href="#">API</a></li>
+                        <li><a href="#">其他相关</a></li>
+                    </ul>
+                </div>
+                <div id="footer-r">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#"> All Rights Reserved. 备案号：闽ICP备000000号-1
+   </a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </footer>
+</body>
+
+</html>
